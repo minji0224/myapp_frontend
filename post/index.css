@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 header {
   border: 1px solid black;
 }
@@ -8,7 +11,18 @@ header > h1{
 
 #sidebar {
   border: 1px solid purple;
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  margin-right: 0;
+  flex-direction: column;
 }
+/* #sidebar > label > button {
+  display: inline-block;
+  border: 1px solid red;
+  position: re;
+  
+} */
 
 #container {
   border: 5px solid black;

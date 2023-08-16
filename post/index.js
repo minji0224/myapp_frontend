@@ -2,6 +2,7 @@ let currentPage = 0;
 let isLastPage = false;
 const PAGE_SIZE = 8;
 let currentQuery = "";
+let queryKey = "";
 
 
 
@@ -28,10 +29,10 @@ function cardTemplate(item) { /*html*/
 }
 
 // 페이징 처리 함수
-async function getPagedList(page, query) {
+async function getPagedList(page, query, queryKey) {
   let url = "";
   if(query) {
-    url = `http://localhost:8080/posts/paging/search?page=${page}&size=${PAGE_SIZE}&query=${query}`;
+    url = `http://localhost:8080/posts/paging/searchBy${queryKey}?page=${page}&size=${PAGE_SIZE}&${queryKey}=${query}`;
   } else {
     url = `http://localhost:8080/posts/paging?page=${page}&size=${PAGE_SIZE}`;
   }
@@ -101,15 +102,29 @@ function setBtnActive() {
   const search = document.querySelector("#search");
   const txtQuery = search.querySelector("input");
   const btnSearch = search.querySelector("button");
+  const options = search.querySelectorAll("option");
+  
+    btnSearch.addEventListener("click", (e)=> {
+      e.preventDefault();
 
-  btnSearch.addEventListener("click", (e)=> {
-    e.preventDefault();
-    currentQuery = txtQuery.value;
-    getPagedList(0, currentQuery);
-  });
+      let searchValue = search.querySelector("select").value;
 
+      if(searchValue === "creatorName"){
+        currentQuery = txtQuery.value;
+        queryKey = options[0].value;
+        getPagedList(0, currentQuery, queryKey);
 
-
+      } else if (searchValue === "restaurantName") {
+        currentQuery = txtQuery.value;
+        queryKey = options[1].value;
+        getPagedList(0, currentQuery, queryKey);      
+      } else if (searchValue === "link"){
+        currentQuery = txtQuery.value;
+        queryKey = options[2].value;
+        getPagedList(0, currentQuery, queryKey);
+      }
+      search.reset();  
+    });  
 })();
 
 
