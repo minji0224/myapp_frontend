@@ -17,3 +17,7 @@ header > h1{
 .template {
   border: 1px solid yellow;
 }
+
+#pageBtn {
+  border: 1px solid purple;
+}

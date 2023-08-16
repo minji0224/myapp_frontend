@@ -3,6 +3,8 @@ let isLastPage = false;
 const PAGE_SIZE = 8;
 let currentQuery = "";
 
+
+
 // 게시물 생성 함수
 function cardTemplate(item) { /*html*/
  const time = new Date(item.createdTime);
@@ -25,8 +27,7 @@ function cardTemplate(item) { /*html*/
   return template;
 }
 
-
-// 페이징 처리
+// 페이징 처리 함수
 async function getPagedList(page, query) {
   let url = "";
   if(query) {
@@ -49,8 +50,26 @@ async function getPagedList(page, query) {
   currentPage = result.number;
   isLastPage = result.last; 
 
-  // setBtnActive();
+  setBtnActive();  
+}
+
+// 페이징 버튼 활성화 여부 함수
+function setBtnActive() {
+  const buttons = document.querySelector("#pageBtn");
+  const btnPrev = buttons[0];
+  const btnNext = buttons[1];
   
+  if(currentPage === 0) {
+    btnPrev.disabled = true;
+  } else {
+    btnPrev.disabled = false;
+  }
+
+  if(isLastPage) {
+    btnNext.disabled = true;
+  } else {
+    btnNext.disabled = false;
+  }
 }
 
 // 첫화면(첫번째페이지)
@@ -59,4 +78,39 @@ async function getPagedList(page, query) {
     getPagedList(0);
   });
 })();
+
+// 페이징 버튼 조작
+(()=> {
+  const buttons = document.querySelector("#pageBtn");
+  const btnPrev = buttons[0];
+  const btnNext = buttons[1];
+
+  btnPrev.addEventListener("click", (e)=> {
+    e.preventDefault();
+    currentPage > 0 && getPagedList(currentPage -1, currentQuery);
+  });
+
+  btnNext.addEventListener("click", (e)=> {
+    e.preventDefault();
+    !isLastPage && getPagedList(currentPage +1, currentQuery);
+  })
+})();
+
+// 페이지 검색
+(()=> {
+  const search = document.querySelector("#search");
+  const txtQuery = search.querySelector("input");
+  const btnSearch = search.querySelector("button");
+
+  btnSearch.addEventListener("click", (e)=> {
+    e.preventDefault();
+    currentQuery = txtQuery.value;
+    getPagedList(0, currentQuery);
+  });
+
+
+
+})();
+
+
 

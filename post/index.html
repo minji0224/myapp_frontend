@@ -15,7 +15,19 @@
       <label><button name="profileBtn">내 정보 보기</button></label>
       <label><button name="addBtn">게시물 올리기</button></label>
     </form>
+    <form id="search" target="_blank">
+      <select>
+        <option value="creatorName" selected>작성자</option>
+        <option value="restaurantName">상호명</option>
+      </select>
+      <input type="text" name="q" />
+      <button>검색</button>
+    </form>
     <div id="container"></div>
+    <form id="pageBtn">
+      <button>이전</button>
+      <button>다음</button>
+    </form>
     <script src="/post/index.js"></script>
   </body>
 </html>
