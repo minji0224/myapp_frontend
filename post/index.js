@@ -1,6 +1,6 @@
 let currentPage = 0;
 let isLastPage = false;
-const PAGE_SIZE = 8;
+const PAGE_SIZE = 6;
 let currentQuery = "";
 let queryKey = "";
 
@@ -17,8 +17,8 @@ function cardTemplate(item) { /*html*/
   ${time.getSeconds().toString()}초`;
 
  const template = `<div class= "template" data-no="${item.no}">
-  <button name="btn-remove">X</button>
   <span>${item.no} ${item.creatorName}</span>
+  <button name="btn-remove">X</button>
   <p>${item.link}</p>
   <h3>${item.restaurantName}</h3>
   <p>${item.content}</p>
@@ -41,11 +41,14 @@ async function getPagedList(page, query, queryKey) {
   const result = await response.json();
 
   const container = document.querySelector("#container");
+  const sidebar = container.querySelector("#sidebar");
+  console.log(container);
+  console.log(sidebar);
 
   container.innerHTML = "";
 
   for(let item of result.content){
-    container.insertAdjacentHTML("afterbegin",cardTemplate(item));
+    container.insertAdjacentHTML("beforeend",cardTemplate(item));
   }
 
   currentPage = result.number;
