@@ -1,6 +1,6 @@
 let currentPage = 0;
 let isLastPage = false;
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 8;
 let currentQuery = "";
 let queryKey = "";
 
@@ -18,7 +18,6 @@ function cardTemplate(item) { /*html*/
 
  const template = `<div class= "template" data-no="${item.no}">
   <span>${item.no} ${item.creatorName}</span>
-  <button name="btn-remove">X</button>
   <p>${item.link}</p>
   <h3>${item.restaurantName}</h3>
   <p>${item.content}</p>
@@ -29,10 +28,10 @@ function cardTemplate(item) { /*html*/
 }
 
 // 페이징 처리 함수
-async function getPagedList(page, query, queryKey) {
+async function getPagedList(page, query, queryKey, firstQuery) {
   let url = "";
   if(query) {
-    url = `http://localhost:8080/posts/paging/searchBy${queryKey}?page=${page}&size=${PAGE_SIZE}&${queryKey}=${query}`;
+    url = `http://localhost:8080/posts/paging/searchBy${firstQuery}?page=${page}&size=${PAGE_SIZE}&${queryKey}=${query}`;
   } else {
     url = `http://localhost:8080/posts/paging?page=${page}&size=${PAGE_SIZE}`;
   }
@@ -42,8 +41,6 @@ async function getPagedList(page, query, queryKey) {
 
   const container = document.querySelector("#container");
   const sidebar = container.querySelector("#sidebar");
-  console.log(container);
-  console.log(sidebar);
 
   container.innerHTML = "";
 
@@ -112,19 +109,28 @@ function setBtnActive() {
 
       let searchValue = search.querySelector("select").value;
 
+      // 패치주소 첫글자 대문자로 바꿔주는 함수
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    
       if(searchValue === "creatorName"){
         currentQuery = txtQuery.value;
         queryKey = options[0].value;
-        getPagedList(0, currentQuery, queryKey);
+        let firstQuery = capitalizeFirstLetter(queryKey)
+        getPagedList(0, currentQuery, queryKey, firstQuery);
 
       } else if (searchValue === "restaurantName") {
         currentQuery = txtQuery.value;
         queryKey = options[1].value;
-        getPagedList(0, currentQuery, queryKey);      
+        let firstQuery = capitalizeFirstLetter(queryKey)
+        getPagedList(0, currentQuery, queryKey, firstQuery);  
+
       } else if (searchValue === "link"){
         currentQuery = txtQuery.value;
         queryKey = options[2].value;
-        getPagedList(0, currentQuery, queryKey);
+        let firstQuery = capitalizeFirstLetter(queryKey)
+        getPagedList(0, currentQuery, queryKey, firstQuery);
       }
       search.reset();  
     });  
