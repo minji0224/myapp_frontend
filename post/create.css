@@ -1,0 +1,44 @@
+*{
+  box-sizing: border-box;
+}
+body {
+  font-family: "Gowun Dodum", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+form > label {
+  border: 1px solid rebeccapurple;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1rem;
+}
+
+form > label > input {
+  font-size: medium;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+button {
+  border: 1px solid red;
+  width: 200px;
+  height: 40px;
+  display: block; 
+}
