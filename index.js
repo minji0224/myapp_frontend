@@ -18,8 +18,9 @@ function cardTemplate(item) { /*html*/
 
  const template = `<div class= "template" data-no="${item.no}">
   <span>${item.no} ${item.creatorName}</span>
-  <p>${item.link}</p>
   <h3>${item.restaurantName}</h3>
+  <p>${item.link}</p>
+  <img src="${image}">
   <p>${item.content}</p>
   <span>${formattedTime}</span>
   </div>`;
@@ -135,6 +136,17 @@ function setBtnActive() {
       search.reset();  
     });  
 })();
+
+
+// 사이드바 버튼 조작
+// (()=> {
+//   const sidebar = document.querySelector("aside");
+//   const addBtn = sidebar.querySelector("네임값 가져오는거");
+
+
+
+
+// })()
 
 
 
