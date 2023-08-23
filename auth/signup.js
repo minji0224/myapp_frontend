@@ -3,20 +3,23 @@ const inputs = form.querySelectorAll("input");
 // 이메일 중복확인
 (()=> {
   const email = inputs[0];
+
   const emailBtn = form.querySelector("#doubleCheckBtn");
   emailBtn.addEventListener("click", async (e)=> {
     e.preventDefault();
+    
+    const emailValue = email.value;
 
-    if(email.value === "") {
+    if(email === "") {
      alert("이메일을 입력해주세요.");
      return;   
     }
 
     const response = await fetch(
-      "http://localhost:8080/auth/doublecheck",
+      `http://localhost:8080/auth/${emailValue}`,
       { method: "POST",
         headers: {"content-type": "application/json",},
-        body: JSON.stringify({email: email.value,}),
+        body: JSON.stringify({emailValue}),
       }
      );
      console.log(response);

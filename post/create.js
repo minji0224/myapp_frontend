@@ -1,15 +1,15 @@
 const form = document.querySelector("form");
 const inputs = form.querySelectorAll("input");
 const button = form.querySelector("button");
-const restauranName = inputs[0];
+const restaurantName = inputs[0];
 const link = inputs[1];
 const photo = inputs[2];
-const content = inputs[3];
+const content = form.querySelector("textarea");
 
 button.addEventListener("click", (e)=> {
-  e.preventDefault;
+  e.preventDefault();
 
-  if(restauranName.value === "") {
+  if(restaurantName.value === "") {
     alert("상호명을 입력해주세요.");
     return;
   }
@@ -29,33 +29,46 @@ button.addEventListener("click", (e)=> {
     return;
   }
 
+  // 게시물 생성 함수
   async function createPost(image) {
-    const response = await fetch("http://localhost:8080/posts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "Authorization": `Bearer ${getCookie("token")}`,
-      },
-      body: JSON.stringify({
-        restauranName: restauranName.value,
-        link: link.value,
-        image: image,
-        content: content.value,
-      }),
-    });
-
+    const response = await fetch("http://localhost:8080/posts",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": `Bearer ${getCookie("token")}`,
+        },
+        body: JSON.stringify({
+          restaurantName: restaurantName.value,
+          link: link.value,
+          image: image ? image : null,
+          content: content.value,
+        }),
+      }
+    );
     console.log(response);
   }
-  const reader = new FileReader();
-  reader.addEventListener("load", async(e) => {
-    console.log(e);
-    const image = e.target.result;
-    createPost(image);
-  });
 
-  reader.readAsDataURL(file.files[0]);
-  document.body.innerHTML =  `<p> 작성이 완료되었습니다. </p>`;
+  if(photo.files[0]){
+    const reader = new FileReader();
+    reader.addEventListener("load", async(e) => {
+      console.log(e);
+      const image = e.target.result;
+      createPost(image);
+    });
+    reader.readAsDataURL(photo.files[0]);
+  } else {
+    createPost();
+  }
 
-  
-  
+    // const reader = new FileReader();
+    // reader.addEventListener("load", async(e) => {
+    //   console.log(e);
+    //   const image = e.target.result;
+    //   createPost(image);
+    // });
+    // reader.readAsDataURL(photo.files[0]);
+
+    alert("작성이 완료되었습니다.");
+    window.location.replace("http://localhost:5500/index.html");
 });

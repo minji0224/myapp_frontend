@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="index.css" />
-    <link
-      rel="stylesheet"
-      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,7 +16,6 @@
     <header>
       <h1>Lorem</h1>
     </header>
-
     <form id="search" target="_blank">
       <select>
         <option value="creatorName" selected>작성자</option>
@@ -31,17 +26,29 @@
       <button>검색</button>
     </form>
     <div id="content">
-      <div id="container"></div>
+      <div id="box">
+        <div id="container"></div>
+        <form id="pageBtn">
+          <button>이전</button>
+          <button>다음</button>
+        </form>
+      </div>
       <aside class="sidebar">
         <label
-          ><button name="home"><a href="/index.html">Home</a></button></label
+          ><button name="home">
+            <a href="/index.html">Home</a>
+          </button></label
         >
         <label
           ><button name="loginBtn">
             <a href="/auth/login.html">로그인</a>
           </button></label
         >
-        <label><button name="profileBtn">내 정보 보기</button></label>
+        <label
+          ><button name="profileBtn">
+            <a href="/mypage/index.html">내 정보 보기</a>
+          </button></label
+        >
         <label
           ><button name="addBtn">
             <a href="/post/create.html">게시물 올리기</a>
@@ -49,10 +56,7 @@
         >
       </aside>
     </div>
-    <form id="pageBtn">
-      <button>이전</button>
-      <button>다음</button>
-    </form>
+
     <script src="/index.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 let currentPage = 0;
 let isLastPage = false;
-const PAGE_SIZE = 8;
+const PAGE_SIZE = 6;
 let currentQuery = "";
 let queryKey = "";
 
@@ -20,7 +20,9 @@ function cardTemplate(item) { /*html*/
   <span>${item.no} ${item.creatorName}</span>
   <h3>${item.restaurantName}</h3>
   <p>${item.link}</p>
-  <img src="${image}">
+  <div id= "templateImage">
+  <img src="${item.image ? item.image : ""}">
+  </div>
   <p>${item.content}</p>
   <span>${formattedTime}</span>
   </div>`;
@@ -39,6 +41,8 @@ async function getPagedList(page, query, queryKey, firstQuery) {
 
   const response = await fetch(url);
   const result = await response.json();
+  console.log(response);
+  console.log(result);
 
   const container = document.querySelector("#container");
   const sidebar = container.querySelector("#sidebar");
@@ -46,7 +50,7 @@ async function getPagedList(page, query, queryKey, firstQuery) {
   container.innerHTML = "";
 
   for(let item of result.content){
-    container.insertAdjacentHTML("beforeend",cardTemplate(item));
+    container.insertAdjacentHTML("afterbegin",cardTemplate(item));
   }
 
   currentPage = result.number;
@@ -58,6 +62,7 @@ async function getPagedList(page, query, queryKey, firstQuery) {
 // 페이징 버튼 활성화 여부 함수
 function setBtnActive() {
   const buttons = document.querySelector("#pageBtn");
+  console.log(buttons);
   const btnPrev = buttons[0];
   const btnNext = buttons[1];
   
@@ -138,15 +143,6 @@ function setBtnActive() {
 })();
 
 
-// 사이드바 버튼 조작
-// (()=> {
-//   const sidebar = document.querySelector("aside");
-//   const addBtn = sidebar.querySelector("네임값 가져오는거");
-
-
-
-
-// })()
 
 
 
