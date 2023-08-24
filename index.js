@@ -4,8 +4,6 @@ const PAGE_SIZE = 6;
 let currentQuery = "";
 let queryKey = "";
 
-
-
 // 게시물 생성 함수
 function cardTemplate(item) { /*html*/
  const time = new Date(item.createdTime);
@@ -49,6 +47,7 @@ async function getPagedList(page, query, queryKey, firstQuery) {
 
   container.innerHTML = "";
 
+  result.content.sort((a, b) => a.no - b.no);
   for(let item of result.content){
     container.insertAdjacentHTML("afterbegin",cardTemplate(item));
   }

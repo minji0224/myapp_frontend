@@ -11,10 +11,14 @@
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
   </head>
   <body>
     <header>
-      <h1>Lorem</h1>
+      <h1>우<span>리</span>동<span>네맛</span>집</h1>
     </header>
     <form id="search" target="_blank">
       <select>
@@ -36,27 +40,25 @@
       <aside class="sidebar">
         <label
           ><button name="home">
-            <a href="/index.html">Home</a>
-          </button></label
-        >
+            <a href="/index.html"><i class="xi-home"></i></a></button
+        ></label>
         <label
-          ><button name="loginBtn">
-            <a href="/auth/login.html">로그인</a>
-          </button></label
+          ><button id="loginBtn">
+            <a href="/auth/login.html"><i class="xi-key"></i></a></button
+        ></label>
+        <label
+          ><button id="logoutBtn" style="display: none">로그아웃</button></label
         >
         <label
           ><button name="profileBtn">
-            <a href="/mypage/index.html">내 정보 보기</a>
-          </button></label
-        >
+            <a href="/mypage/index.html"><i class="xi-profile"></i></a></button
+        ></label>
         <label
           ><button name="addBtn">
-            <a href="/post/create.html">게시물 올리기</a>
-          </button></label
-        >
+            <a href="/post/create.html"><i class="xi-plus"></i></a></button
+        ></label>
       </aside>
     </div>
-
     <script src="/index.js"></script>
   </body>
 </html>

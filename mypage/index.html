@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="/mypage/index.css" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
+    />
   </head>
   <body>
     <script src="/auth/auth.js"></script>
@@ -12,11 +16,21 @@
       <h1>Lorem</h1>
     </header>
     <div id="container">
-      <div id="myProfile">
-        <h2>나의 프로필</h2>
-      </div>
+      <div id="myProfile"></div>
       <div id="myPost">
         <h2>내가 쓴 글</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td></td>
+              <td>no</td>
+              <td>상호명</td>
+              <td>작성자</td>
+              <td>작성시간</td>
+            </tr>
+          </tbody>
+        </table>
+        <button id="removeBtn">삭제</button>
       </div>
     </div>
 

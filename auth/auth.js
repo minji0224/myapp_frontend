@@ -16,5 +16,5 @@ function getCookie(name) {
   console.log(token);
   if (!token) {
     window.location.href = "/auth/login.html";
-  }
+  } 
 })();

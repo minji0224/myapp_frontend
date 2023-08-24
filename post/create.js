@@ -70,5 +70,5 @@ button.addEventListener("click", (e)=> {
     // reader.readAsDataURL(photo.files[0]);
 
     alert("작성이 완료되었습니다.");
-    window.location.replace("http://localhost:5500/index.html");
+    window.location.replace("/index.html");
 });

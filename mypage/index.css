@@ -25,7 +25,38 @@ header > h1{
 }
 
 #myProfile {
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
+  margin: 2rem;
+  padding: 2rem;
+  align-items: center;
+  font-size: medium;
+  justify-content: center;
+}
+.profileCard {
+  /* border: 1px solid #dc2f02; */
+  border-radius: 10px;
+  text-align: center;
+}
+
+.profileCard div {
+  margin: 1rem;
+  font-size: medium;
+}
+
+#myPost {
+  border: 1px solid purple;
+  flex: 2;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+table{
+  border: 1px solid blue;
+  display: block;
+}
+
+table td{
+  border: 1px solid red;
+  
 }
