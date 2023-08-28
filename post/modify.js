@@ -1,3 +1,4 @@
+// postNo로 가져온 해당 post객체 생성하기.
 (async()=> {
   const urlParams = new URLSearchParams(window.location.search);
   const postNo = urlParams.get("postNo");
@@ -11,44 +12,55 @@
       });
   
     const result = await response.json();
-    console.log(result);
 
     const restaurantName = document.querySelectorAll("input")[0];
     const link = document.querySelectorAll("input")[1];
-    // const photo = document.querySelectorAll("input")[2];
+    const preview = document.getElementById("preview");
     const content = document.querySelector("textarea");
+    const img = document.createElement("img");
 
     restaurantName.value = result.restaurantName;
     link.value = result.link;
-    // photo.value = result.value;
+    img.src = result.image;
+    preview.appendChild(img);
     content.value = result.content;
   }
 })();
 
-document.querySelectorAll("button")[1].addEventListener("click", async(e) => {
+// 수정버튼 눌렀을 때 서버에 풋하기.
+document.querySelectorAll("button")[1].addEventListener("click", (e) => {
   e.preventDefault();
   const urlParams = new URLSearchParams(window.location.search);
-  const no = urlParams.get("postNo");
+  const postNo = urlParams.get("postNo");
 
   const restaurantName = document.querySelectorAll("input")[0].value;
   const link = document.querySelectorAll("input")[1].value;
-  // const photo = document.querySelectorAll("input")[2].value;
+  const image = document.querySelectorAll("input")[2].value;
   const content = document.querySelector("textarea").value;
   console.log(restaurantName);
   console.log(link);
   console.log(content);
 
-  await fetch(`http://localhost:8080/posts/${no}`, {
-    method: "PUT",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ restaurantName, link, content }),
-  }); 
-  
-  
+  async function modifyPost(image) {
+    const response = await fetch(`http://localhost:8080/posts/${postNo}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ restaurantName, link, image: image ? image : null, content }),
+    });    
+    console.log(response);
+  }
 
+  if(photo.files[0]){
+    const reader = new FileReader();
+    reader.addEventListener("load", async(e) => {
+      const image = e.target.result;
+      modifyPost(image);
+    });
+    reader.readAsDataURL(photo.files[0]);
+  } else {
+    modifyPost();
+  }
 
-
-
-
-
+  alert("수정이 완료되었습니다.");
+  window.location.replace("/index.html");
 })

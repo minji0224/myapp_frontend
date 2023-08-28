@@ -42,14 +42,13 @@ header > h1 span {
   display: flex;
   flex-direction: column;
   text-align: right;
-  width: 10%;
+  width: 80px;
   margin-right: 2rem;
 }
 
 .sidebar > label > button {
   background: transparent;
   border: none;
-  text-align: center;
   padding: 10px;
 }
 

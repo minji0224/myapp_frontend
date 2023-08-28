@@ -1,3 +1,16 @@
+(() => {
+  const token = getCookie("token");
+  console.log(token);
+  if (!token) {
+    window.location.href = "/auth/login.html";
+  } 
+
+  // hiddenLogoutBtn();
+  // logout();
+})();
+
+
+
 const form = document.querySelector("form");
 const inputs = form.querySelectorAll("input");
 const buttons = form.querySelectorAll("button");

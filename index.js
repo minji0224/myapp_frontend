@@ -4,6 +4,14 @@ const PAGE_SIZE = 6;
 let currentQuery = "";
 let queryKey = "";
 
+// 로그인/로그아웃
+(() => {
+  const token = getCookie("token");
+  console.log(token);
+  hiddenLogoutBtn();
+  logout();
+})();
+
 
 // 게시물 생성 함수
 function cardTemplate(item) { /*html*/

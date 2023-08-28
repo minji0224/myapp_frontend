@@ -1,3 +1,15 @@
+(() => {
+  const token = getCookie("token");
+  console.log(token);
+  if (!token) {
+    window.location.href = "/auth/login.html";
+  } 
+
+  // hiddenLogoutBtn();
+  // logout();
+})();
+
+
 // 프로필 생성 함수
 function profileCard(username, email, nickname) {
  
@@ -38,11 +50,6 @@ function createRow(no, restaurantName, creatorName, createdTime) {
   },
 });
 
-if ([401, 403].includes(response.status)) {
-  alert("로그인이 필요합니다.");
-  window.location.href = "/auth/login.html";
-}
-
 const result = await response.json();
 const {data} = result;
 
@@ -59,11 +66,6 @@ myProfile.insertAdjacentHTML("beforeend",profileCard(data.username, data.user.em
       Authorization: `Bearer ${getCookie("token")}`,
     },
   });
-
-  if ([401, 403].includes(response.status)) {
-    alert("로그인이 필요합니다.");
-    window.location.href = "/auth/login.html";
-  }
 
   const result = await response.json();
   const {data} = result;

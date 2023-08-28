@@ -11,16 +11,16 @@ function getCookie(name) {
 }
 
 
-(() => {
-  const token = getCookie("token");
-  console.log(token);
-  if (!token) {
-    window.location.href = "/auth/login.html";
-  } 
+// (() => {
+//   const token = getCookie("token");
+//   console.log(token);
+//   if (!token) {
+//     window.location.href = "/auth/login.html";
+//   } 
 
-  // hiddenLogoutBtn();
-  // logout();
-})();
+//   hiddenLogoutBtn();
+//   logout();
+// })();
 
 function hiddenLogoutBtn() {
   const token = getCookie("token");
@@ -44,9 +44,12 @@ function logout() {
 
   logoutBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    
+    const ask = confirm("로그아웃 하시겠습니까?");
 
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        
-    window.location.replace("/index.html");
+    if(ask) {
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";        
+      window.location.replace("/index.html");
+    }
   });
 }
