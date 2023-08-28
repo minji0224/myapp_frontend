@@ -4,6 +4,7 @@ const PAGE_SIZE = 6;
 let currentQuery = "";
 let queryKey = "";
 
+
 // 게시물 생성 함수
 function cardTemplate(item) { /*html*/
  const time = new Date(item.createdTime);
@@ -39,8 +40,6 @@ async function getPagedList(page, query, queryKey, firstQuery) {
 
   const response = await fetch(url);
   const result = await response.json();
-  console.log(response);
-  console.log(result);
 
   const container = document.querySelector("#container");
   const sidebar = container.querySelector("#sidebar");
@@ -61,7 +60,6 @@ async function getPagedList(page, query, queryKey, firstQuery) {
 // 페이징 버튼 활성화 여부 함수
 function setBtnActive() {
   const buttons = document.querySelector("#pageBtn");
-  console.log(buttons);
   const btnPrev = buttons[0];
   const btnNext = buttons[1];
   

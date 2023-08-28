@@ -12,11 +12,16 @@ body{
 
 header > h1{
   text-align: center;
-  font-size: 4rem;
+  font-size: 5rem;
   margin: 0;
   padding: 1.5rem;
-  background-color: #dc2f02;
-  color: aliceblue;
+  background-color: #d84727;
+  color: white;
+  letter-spacing: 10px;
+}
+
+header > h1 span {
+  font-size: small;
 }
 
 #container {

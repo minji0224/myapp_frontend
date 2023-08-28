@@ -107,15 +107,68 @@ document.getElementById("removeBtn").addEventListener("click", async (e) => {
   };
 })
 
+// 수정페이지로 이동
+document.getElementById("myPost").addEventListener("click", (e)=> {
+  if(e.target.classList.contains("modifyBtn")) {
+    e.preventDefault();
+    const postNo = e.target.parentElement.parentElement.dataset.no;
+    // 버튼에 value값을 넣어서 value값으로 찾아와도 됨  e.target.value;   
+    console.log(postNo);
+    window.location.href = `http://localhost:5500/post/create.html?postNo=${postNo}`;
+  }
+})
+
 // 수정하기
-// document.getElementById("myPost").addEventListener("click", async (e) => {
+// document.getElementById("myPost").addEventListener("click",(e) => {
 //   if(e.target.classList.contains("modifyBtn")) {
+//     e.preventDefault();
 //      /** @type {HTMLButtonElement} */
 //     const button = e.target;
-//     console.log(button.value);
-//     console.log(e);
-//   }
-//   e.preventDefault();
-  
+//     const postNo = button.value;
+//     console.log(postNo);
 
+//     let createHtml = window.open("/post/create.html");
+
+//     createHtml.addEventListener("load", async(e) => {
+
+//       const response = await fetch(`http://localhost:8080/posts/${postNo}`,{
+//           headers: {"Authorization": `Bearer ${getCookie("token")}`,},
+//         });
+
+//         const result = await response.json();
+
+
+//         const restaurantName = createHtml.document.querySelectorAll("input")[0];
+//         const link = createHtml.document.querySelectorAll("input")[1];
+//         const photo = createHtml.document.querySelectorAll("input")[2];
+//         const content = createHtml.document.querySelector("textarea");
+
+//         console.log(restaurantName);
+
+//         restaurantName.value = result.restaurantName;
+//         link.value = result.link;
+//         // photo.value = result.value;
+//         content.value = result.content;
+
+//         createHtml.document.querySelectorAll("button")[1].style.display= "block";
+//         createHtml.document.querySelectorAll("button")[0].style.display= "none";
+
+//         createHtml.document.querySelectorAll("button")[1].addEventListener("click", async (e) => {
+//           e.preventDefault();
+
+//           const no = postNo;
+
+//           const restaurantName = createHtml.document.querySelectorAll("input")[0].value;
+//           const link = createHtml.document.querySelectorAll("input")[1].value;
+//           // const photo = createHtml.document.querySelectorAll("input")[2].value;
+//           const content = createHtml.document.querySelector("textarea").value;
+
+//           await fetch(`http://localhost:8080/posts/${no}`, {
+//             method: "PUT",
+//             headers: { "content-type": "application/json" },
+//             body: JSON.stringify({ restaurantName, link, content }),
+//           }); 
+//         })
+//     })
+//   } 
 // })

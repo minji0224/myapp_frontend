@@ -1,12 +1,37 @@
 const form = document.querySelector("form");
 const inputs = form.querySelectorAll("input");
-const button = form.querySelector("button");
+const buttons = form.querySelectorAll("button");
 const restaurantName = inputs[0];
 const link = inputs[1];
 const photo = inputs[2];
 const content = form.querySelector("textarea");
+const preview = document.getElementById("preview");
+console.log(buttons);
+console.log(buttons[0]);
 
-button.addEventListener("click", (e)=> {
+// 사진 미리보기
+(()=> {
+  photo.addEventListener("change", function() {
+    const image = photo.files[0];
+    if(image) {
+      const reader = new FileReader();
+      
+      reader.addEventListener("load", function() {
+        const img = document.createElement("img");
+        img.src = reader.result;
+        preview.innerHTML = "";
+        preview.appendChild(img);
+      });
+      reader.readAsDataURL(image);
+    } else {
+      preview.innerHTML="";
+    }
+  })
+})();
+
+
+
+buttons[0].addEventListener("click", (e)=> {
   e.preventDefault();
 
   if(restaurantName.value === "") {

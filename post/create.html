@@ -24,13 +24,16 @@
       <label
         ><input type="text" placeholder="*식당의 주소를 입력해주세요."
       /></label>
-      <label
-        ><input
-          type="file"
-          style="width: 140px"
-          accept="image/*"
-          placeholder="사진을 올려주세요."
-      /></label>
+      <div id="imgFile">
+        <label
+          ><input
+            type="file"
+            style="width: 140px"
+            accept="image/*"
+            placeholder="사진을 올려주세요."
+        /></label>
+        <div id="preview"></div>
+      </div>
       <label>
         <textarea
           name=""
@@ -41,8 +44,10 @@
         ></textarea>
       </label>
       <button>게시물 올리기</button>
+      <button style="display: none">수정하기</button>
     </form>
 
     <script src="/post/create.js"></script>
+    <script src="/post/modify.js"></script>
   </body>
 </html>
