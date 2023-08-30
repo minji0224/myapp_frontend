@@ -33,6 +33,7 @@ header > h1 span {
 
 #container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -41,11 +42,10 @@ header > h1 span {
 #myProfile {
   display: flex;
   flex-direction: column;
-  margin: 2rem;
-  padding: 2rem;
   align-items: center;
   font-size: medium;
   justify-content: center;
+
 }
 
 .profileCard {
@@ -53,9 +53,12 @@ header > h1 span {
   border: 2px solid #d84727;
   border-radius: 20px;
 }
-
+.profileCard i {
+  color: #d84727;
+  font-size: 3rem;
+}
 .profileCard div {
-  margin: 1rem;
+  padding: 0.5rem;
   font-size: medium;
 }
 

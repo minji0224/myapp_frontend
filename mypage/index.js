@@ -4,6 +4,8 @@
   if (!token) {
     window.location.href = "/auth/login.html";
   } 
+  hiddenLogoutBtn();
+  logout();
 })();
 
 
@@ -13,7 +15,7 @@ function profileCard(username, email, nickname) {
   const card = /*html*/
   `
   <div class = "profileCard">
-  <h2>My Profile</h2>
+  <div><i class="xi-user-o"></i></div>
   <div>${username}</div>
   <div>${email}</div>
   <div>${nickname}</div>  

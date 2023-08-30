@@ -4,9 +4,8 @@
   if (!token) {
     window.location.href = "/auth/login.html";
   } 
-
-  // hiddenLogoutBtn();
-  // logout();
+  hiddenLogoutBtn();
+  logout();
 })();
 
 

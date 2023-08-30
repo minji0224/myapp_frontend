@@ -1,30 +1,30 @@
-// postNo로 가져온 해당 post객체 생성하기.
+// postNo가 있다면(수정을 눌렀다면) 
+// postNo로 가져온 해당 post객체 create.html에 생성하기.
 (async()=> {
   const urlParams = new URLSearchParams(window.location.search);
   const postNo = urlParams.get("postNo");
-  
-  if(postNo) {
-    document.querySelectorAll("button")[1].style.display= "block";
-    document.querySelectorAll("button")[0].style.display= "none";
-  
+
+  if(postNo){
     const response = await fetch(`http://localhost:8080/posts/${postNo}`,{
-        headers: {"Authorization": `Bearer ${getCookie("token")}`,},
-      });
+      headers: {"Authorization": `Bearer ${getCookie("token")}`,},
+    });
   
     const result = await response.json();
-
+  
     const restaurantName = document.querySelectorAll("input")[0];
     const link = document.querySelectorAll("input")[1];
     const preview = document.getElementById("preview");
     const content = document.querySelector("textarea");
     const img = document.createElement("img");
-
+  
     restaurantName.value = result.restaurantName;
     link.value = result.link;
     img.src = result.image;
     preview.appendChild(img);
     content.value = result.content;
   }
+  
+
 })();
 
 // 수정버튼 눌렀을 때 서버에 풋하기.
