@@ -1,0 +1,34 @@
+aside{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  margin-right: 2rem;
+}
+
+aside label {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+aside label a {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+aside label a button {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+aside label a button i {
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  color: #dc2f02;
+}

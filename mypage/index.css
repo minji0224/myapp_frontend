@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body{
   font-family: "Gowun Dodum", sans-serif;
   font-family: "Noto Sans KR", sans-serif;
@@ -24,9 +25,17 @@ header > h1 span {
   font-size: small;
 }
 
+#content {
+  display: flex;
+  width: 100vw;
+  margin-top: 2.5rem;
+}
+
 #container {
   display: flex;
-  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #myProfile {
@@ -38,10 +47,11 @@ header > h1 span {
   font-size: medium;
   justify-content: center;
 }
+
 .profileCard {
-  /* border: 1px solid #dc2f02; */
-  border-radius: 10px;
   text-align: center;
+  border: 2px solid #d84727;
+  border-radius: 20px;
 }
 
 .profileCard div {
@@ -50,18 +60,41 @@ header > h1 span {
 }
 
 #myPost {
-  border: 1px solid purple;
   flex: 2;
   margin: 2rem;
   padding: 2rem;
 }
 
 table{
-  border: 1px solid blue;
-  display: block;
+  border: 2px solid #ee964b;
+  background-color: #efefd0;
+  border-radius: 20px;
+  padding: 1rem;
+  width: 650px; 
+  font-size: 17px;
 }
 
-table td{
-  border: 1px solid red;
-  
+td {
+  padding: 0.3rem;
 }
+
+ td button {
+  border: 2px solid #ee964b;
+  background-color: #efefd0;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ee6055;
+}
+
+#removeBtn {
+  width: 50px;
+  height: 30px;
+  background-color: #ee6055;
+  color: aliceblue;
+  font-size: medium;
+  border: none;
+  margin-top: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+

@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
 }
+
 body{
   font-family: "Gowun Dodum", sans-serif;
   font-family: "Noto Sans KR", sans-serif;
@@ -17,7 +18,6 @@ header > h1{
   font-size: 5rem;
   margin: 0;
   padding: 1.5rem;
-  /* background-color: #dc2f02; */
   background-color: #d84727;
   color: white;
   letter-spacing: 10px;
@@ -26,42 +26,22 @@ header > h1{
 header > h1 span {
   font-size: small;
 }
+
 #search {
   padding: 0.5rem;
   text-align: right;
 }
 
+#search select {
+  width: 80px;
+  height: 20px;
+  font-size: 14px;
+}
+
 #content {
   display: flex;
   width: 100vw;
-  height: 100vh;
-  
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  width: 80px;
-  margin-right: 2rem;
-}
-
-.sidebar > label > button {
-  background: transparent;
-  border: none;
-  padding: 10px;
-}
-
-.sidebar > label > button >  a {
-  text-decoration: none;
-}
-
-.sidebar > label > button > a > i {
-  text-decoration: none;
-  width: 100%;
-  height: 100%;
-  font-size: 3rem;
-  color: #dc2f02;
+  height: 100vh;  
 }
 
 #container {
@@ -78,6 +58,7 @@ header > h1 span {
   height: 100%;
   width: 100%;
 }
+
 .template {
   border: 1px solid #dc2f02;
   display: flex;

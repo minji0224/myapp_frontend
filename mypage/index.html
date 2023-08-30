@@ -9,31 +9,42 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css"
     />
+    <link rel="stylesheet" href="/sidebar.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <script src="/auth/auth.js"></script>
     <header>
       <h1>우<span>리</span>동<span>네맛</span>집</h1>
     </header>
-    <div id="container">
-      <div id="myProfile"></div>
-      <div id="myPost">
-        <h2>내가 쓴 글</h2>
-        <table>
-          <tbody>
-            <tr>
-              <td></td>
-              <td>no</td>
-              <td>상호명</td>
-              <td>작성자</td>
-              <td>작성시간</td>
-            </tr>
-          </tbody>
-        </table>
-        <button id="removeBtn">삭제</button>
+
+    <div id="content">
+      <div id="container">
+        <div id="myProfile"></div>
+        <div id="myPost">
+          <h2>내가 쓴 글</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>no</td>
+                <td>상호명</td>
+                <td>작성자</td>
+                <td>작성시간</td>
+              </tr>
+            </tbody>
+          </table>
+          <button id="removeBtn">삭제</button>
+        </div>
       </div>
     </div>
 
+    <script src="/sidebar.js"></script>
     <script src="/mypage/index.js"></script>
   </body>
 </html>

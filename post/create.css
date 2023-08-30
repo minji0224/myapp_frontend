@@ -1,17 +1,19 @@
 *{
   box-sizing: border-box;
 }
+
 body {
   font-family: "Gowun Dodum", sans-serif;
   font-family: "Noto Sans KR", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  margin-right: 2rem;
+  padding-right: 2rem;
+  /* display: flex;
+  flex-direction: column; */
 }
 
-/* header > h1{
+header > h1{
   text-align: center;
   font-size: 5rem;
   margin: 0;
@@ -23,7 +25,23 @@ body {
 
 header > h1 span {
   font-size: small;
-} */
+}
+
+#content {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 2.5rem;
+  margin-left: 0;
+  flex-direction: row;
+}
+
+#box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 form {
   border: 2px solid #f95738;
@@ -32,7 +50,6 @@ form {
   flex-direction: column;
   width: 500px;
   height: 800px;
-  justify-content: center;
   align-items: center;
   padding: 0.3rem;
 }
@@ -59,7 +76,6 @@ form > label, div {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid brown;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -93,4 +109,5 @@ button {
   font-size: medium;
   font-weight: 700;
 }
+
 

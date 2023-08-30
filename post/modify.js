@@ -44,7 +44,8 @@ document.querySelectorAll("button")[1].addEventListener("click", (e) => {
   async function modifyPost(image) {
     const response = await fetch(`http://localhost:8080/posts/${postNo}`, {
       method: "PUT",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json",
+                 "Authorization": `Bearer ${getCookie("token")}`},
       body: JSON.stringify({ restaurantName, link, image: image ? image : null, content }),
     });    
     console.log(response);

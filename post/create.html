@@ -15,39 +15,50 @@
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/sidebar.css" />
   </head>
   <body>
     <script src="/auth/auth.js"></script>
-    <form action="">
-      <h1>내 동네 맛집 알리기</h1>
-      <label><input type="text" placeholder="*상호명을 입력해주세요." /></label>
-      <label
-        ><input type="text" placeholder="*식당의 주소를 입력해주세요."
-      /></label>
-      <div id="imgFile">
-        <label
-          ><input
-            type="file"
-            style="width: 140px"
-            accept="image/*"
-            placeholder="사진을 올려주세요."
-        /></label>
-        <div id="preview"></div>
+    <header>
+      <h1>우<span>리</span>동<span>네맛</span>집</h1>
+    </header>
+    <div id="content">
+      <div id="box">
+        <form action="">
+          <h1>내 동네 맛집 알리기</h1>
+          <label
+            ><input type="text" placeholder="*상호명을 입력해주세요."
+          /></label>
+          <label
+            ><input type="text" placeholder="*식당의 주소를 입력해주세요."
+          /></label>
+          <div id="imgFile">
+            <label
+              ><input
+                type="file"
+                style="width: 140px"
+                accept="image/*"
+                placeholder="사진을 올려주세요."
+            /></label>
+            <div id="preview"></div>
+          </div>
+          <label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              placeholder="간단한 후기를 작성해주세요."
+            ></textarea>
+          </label>
+          <button>게시물 올리기</button>
+          <button style="display: none">수정하기</button>
+        </form>
       </div>
-      <label>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="간단한 후기를 작성해주세요."
-        ></textarea>
-      </label>
-      <button>게시물 올리기</button>
-      <button style="display: none">수정하기</button>
-    </form>
+    </div>
 
     <script src="/post/create.js"></script>
     <script src="/post/modify.js"></script>
+    <script src="/sidebar.js"></script>
   </body>
 </html>
