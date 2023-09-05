@@ -26,9 +26,6 @@ function hiddenLogoutBtn() {
   const token = getCookie("token");
   const logoutBtn = document.getElementById("logoutBtn");
   const loginBtn = document.getElementById("loginBtn");
-  console.log(loginBtn);
-  console.log(logoutBtn);
-
 
   if(token) {
     logoutBtn.style.display = "block";

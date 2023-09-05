@@ -73,6 +73,10 @@ header > h1 span {
   padding: 0.4rem;
 }
 
+.likeCnt{
+  border: 1px solid black;
+}
+
 .template > h3 {
   background-color: #f95738;
   color: #f8edeb;

@@ -31,7 +31,7 @@ function createRow(no, restaurantName, creatorName, createdTime) {
   tr.dataset.no = no;
   tr.innerHTML = 
       `
-    <td><input type="checkbox" value="${no}" /></td>
+    <td><input type="checkbox" value="${no}"/></td>
     <td>${no}</td>
     <td>${restaurantName}</td>
     <td>${creatorName}</td>
@@ -51,6 +51,7 @@ function createRow(no, restaurantName, creatorName, createdTime) {
 
 const result = await response.json();
 const {data} = result;
+console.log(data);
 
 const myProfile = document.querySelector("#myProfile");
 myProfile.insertAdjacentHTML("beforeend",profileCard(data.username, data.user.email, data.nickname));
@@ -86,6 +87,7 @@ document.getElementById("removeBtn").addEventListener("click", async (e) => {
   const table = document.querySelector("table");
   const checkboxs = table.querySelectorAll("input");
   const nos = [];
+  console.log(checkboxs);
 
   checkboxs.forEach(check => {
     if(check.checked) {
@@ -93,25 +95,35 @@ document.getElementById("removeBtn").addEventListener("click", async (e) => {
       nos.push(check.value);
       console.log(nos);
       console.log(nos.join(','));
-    }
+    } 
   });
 
-  const response = await fetch(`http://localhost:8080/posts?nos=${nos.join(',')}`, {
-    method: "DELETE",
-    headers: { Authorization: `Bearer ${getCookie("token")}` },
-  });
+  if(nos.length === 0){
+    return alert("삭제할 게시물을 선택해주세요.");
+  }
 
-  for(let no of nos) {
-    const tr = document.querySelector(`tr[data-no="${no}"]`);
-    console.log(no);
-    tr.remove();
-  };
+  const ask = confirm("해당 게시물을 정말 삭제하시겠습니까?");
+
+  if(ask) {
+    const response = await fetch(`http://localhost:8080/posts?nos=${nos.join(',')}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${getCookie("token")}` },
+    });
+    console.log(response);
+  
+    for(let no of nos) {
+      const tr = document.querySelector(`tr[data-no="${no}"]`);
+      console.log(no);
+      tr.remove();
+    };
+  }
 })
 
 // 수정페이지로 이동
 document.getElementById("myPost").addEventListener("click", (e)=> {
+  // e.preventDefault();
   if(e.target.classList.contains("modifyBtn")) {
-    e.preventDefault();
+    
     const postNo = e.target.parentElement.parentElement.dataset.no;
     // 버튼에 value값을 넣어서 value값으로 찾아와도 됨  e.target.value;   
     console.log(postNo);

@@ -5,6 +5,9 @@
   const postNo = urlParams.get("postNo");
 
   if(postNo){
+    document.querySelectorAll("button")[0].style.display = "none";
+    document.querySelectorAll("button")[1].style.display = "block";
+
     const response = await fetch(`http://localhost:8080/posts/${postNo}`,{
       headers: {"Authorization": `Bearer ${getCookie("token")}`,},
     });

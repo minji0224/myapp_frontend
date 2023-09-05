@@ -143,7 +143,7 @@ function setBtnActive() {
         let firstQuery = capitalizeFirstLetter(queryKey)
         getPagedList(0, currentQuery, queryKey, firstQuery);
       }
-      search.reset();  
+      // search.reset();  
     });  
 })();
 

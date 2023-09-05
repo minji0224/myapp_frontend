@@ -26,6 +26,7 @@ const inputs = form.querySelectorAll("input");
      
      if([409].includes(response.status)) {
       alert("이미 사용중인 이메일입니다.");
+      form.reset();
      } else {
       alert("사용가능한 이메일입니다.");
      }
