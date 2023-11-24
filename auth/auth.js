@@ -36,6 +36,11 @@ function hiddenLogoutBtn() {
   }
 };
 
+
+function isLocalhost() {
+  return ["localhost", "127.0.0.1"].includes(location.hostname);
+}
+
 function logout() {
   const logoutBtn = document.getElementById("logoutBtn");
 
@@ -45,8 +50,16 @@ function logout() {
     const ask = confirm("로그아웃 하시겠습니까?");
 
     if(ask) {
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";        
-      window.location.replace("/index.html");
+      console.log(isLocalhost());
+
+      if(isLocalhost()) {
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";    
+        window.location.replace("/index.html");
+      } else {
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=d2wuhbzv4h0zv6.cloudfront.net;";
+        window.location.replace("/index.html");
+      }
+      
     }
   });
 }
