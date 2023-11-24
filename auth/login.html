@@ -13,17 +13,35 @@
     />
   </head>
   <body>
+    <script>
+      function isLocalhost() {
+        return ["localhost", "127.0.0.1"].includes(location.hostname);
+      }
+      function apiUrl() {
+        return `${isLocalhost() ? "http" : "https"}://${
+          isLocalhost() ? `${location.hostname}:8080` : location.hostname
+        }`;
+      }
+
+      function loginForm() {
+        document.querySelectorAll("input")[0].value;
+        document.querySelectorAll("input")[1].value;
+        document.querySelector("form").action = `${apiUrl()}/api/auth/signin`;
+
+        return true;
+      }
+    </script>
     <header>
       <h1>우<span>리</span>동<span>네맛</span>집</h1>
     </header>
     <div>
-      <form action="http://localhost:8080/auth/signin" method="post">
+      <form onsubmit="return loginForm()" method="post">
         <h1>Login</h1>
         <input
           type="text"
           name="email"
           placeholder="이메일"
-          value="ljo147@naver.com"
+          value="user1@gmail.com"
         />
         <input
           type="password"

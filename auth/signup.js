@@ -1,5 +1,15 @@
 const form = document.querySelector("form");
 const inputs = form.querySelectorAll("input");
+
+function isLocalhost() {
+  return ["localhost", "127.0.0.1"].includes(location.hostname);
+}
+function apiUrl() {
+  return `${isLocalhost() ? "http" : "https"}://${
+    isLocalhost() ? `${location.hostname}:8080` : location.hostname
+  }`;
+}
+
 // 이메일 중복확인
 (()=> {
   const email = inputs[0];
@@ -16,7 +26,7 @@ const inputs = form.querySelectorAll("input");
     }
 
     const response = await fetch(
-      `http://localhost:8080/auth/${emailValue}`,
+      `${apiUrl()}/api/auth/${emailValue}`,
       { method: "POST",
         headers: {"content-type": "application/json",},
         body: JSON.stringify({emailValue}),
@@ -68,7 +78,7 @@ const inputs = form.querySelectorAll("input");
     }
 
     const response = await fetch(
-      "http://localhost:8080/auth/signup",
+      `${apiUrl()}/api/auth/signup`,
       { method: "POST",
       headers: {"content-type": "application/json",},
       body: JSON.stringify({

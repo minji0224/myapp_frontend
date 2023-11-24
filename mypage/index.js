@@ -43,7 +43,7 @@ function createRow(no, restaurantName, creatorName, createdTime) {
 
 // 프로필 정보 불러오기
 (async()=> {
-  const response = await fetch ("http://localhost:8080/profile", {
+  const response = await fetch (`${apiUrl()}/api/profile`, {
   headers: {
     Authorization: `Bearer ${getCookie("token")}`,
   },
@@ -61,7 +61,7 @@ myProfile.insertAdjacentHTML("beforeend",profileCard(data.username, data.user.em
 // 내가 쓴 글 불러오기
 (async ()=> {
 
-    const response = await fetch ("http://localhost:8080/posts", {
+    const response = await fetch (`${apiUrl()}/api/posts`, {
     headers: {
       Authorization: `Bearer ${getCookie("token")}`,
     },
@@ -105,7 +105,7 @@ document.getElementById("removeBtn").addEventListener("click", async (e) => {
   const ask = confirm("해당 게시물을 정말 삭제하시겠습니까?");
 
   if(ask) {
-    const response = await fetch(`http://localhost:8080/posts?nos=${nos.join(',')}`, {
+    const response = await fetch(`${apiUrl()}/api/posts?nos=${nos.join(',')}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${getCookie("token")}` },
     });

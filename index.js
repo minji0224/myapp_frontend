@@ -40,10 +40,16 @@ function cardTemplate(item) { /*html*/
 // 페이징 처리 함수
 async function getPagedList(page, query, queryKey, firstQuery) {
   let url = "";
+  // if(query) {
+  //   url = `http://localhost:8080/posts/paging/searchBy${firstQuery}?page=${page}&size=${PAGE_SIZE}&${queryKey}=${query}`;
+  // } else {
+  //   url = `http://localhost:8080/posts/paging?page=${page}&size=${PAGE_SIZE}`;
+  // }
+
   if(query) {
-    url = `http://localhost:8080/posts/paging/searchBy${firstQuery}?page=${page}&size=${PAGE_SIZE}&${queryKey}=${query}`;
+    url = `${apiUrl()}/api/posts/paging/searchBy${firstQuery}?page=${page}&size=${PAGE_SIZE}&${queryKey}=${query}`;
   } else {
-    url = `http://localhost:8080/posts/paging?page=${page}&size=${PAGE_SIZE}`;
+    url = `${apiUrl()}/api/posts/paging?page=${page}&size=${PAGE_SIZE}`;
   }
 
   const response = await fetch(url);

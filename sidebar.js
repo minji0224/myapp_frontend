@@ -13,3 +13,17 @@
   console.log(document.getElementById("logoutBtn"));
 
 })();
+
+// 현재페이지가 로컬인지 아닌지 확인 여부
+// window.location.hostname: 현재 문서의 도메인=호스트이름("www.example.com")
+function isLocalhost() {
+  return ["localhost", "127.0.0.1"].includes(location.hostname);
+}
+
+// 현재페이지가 true 즉 로컬환경이면 8080으로 
+// 아니면 https//도메인으로
+function apiUrl() {
+  return `${isLocalhost() ? "http" : "https"}://${
+    isLocalhost() ? `${location.hostname}:8080` : location.hostname
+  }`;
+}

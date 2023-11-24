@@ -8,7 +8,7 @@
     document.querySelectorAll("button")[0].style.display = "none";
     document.querySelectorAll("button")[1].style.display = "block";
 
-    const response = await fetch(`http://localhost:8080/posts/${postNo}`,{
+    const response = await fetch(`${apiUrl()}/api/posts/${postNo}`,{
       headers: {"Authorization": `Bearer ${getCookie("token")}`,},
     });
   
@@ -45,7 +45,7 @@ document.querySelectorAll("button")[1].addEventListener("click", (e) => {
   console.log(content);
 
   async function modifyPost(image) {
-    const response = await fetch(`http://localhost:8080/posts/${postNo}`, {
+    const response = await fetch(`${apiUrl()}/api/posts/${postNo}`, {
       method: "PUT",
       headers: { "content-type": "application/json",
                  "Authorization": `Bearer ${getCookie("token")}`},

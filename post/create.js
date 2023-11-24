@@ -42,7 +42,6 @@ console.log(buttons[0]);
 })();
 
 
-
 buttons[0].addEventListener("click", (e)=> {
   e.preventDefault();
 
@@ -68,44 +67,123 @@ buttons[0].addEventListener("click", (e)=> {
 
   // 게시물 생성 함수
   async function createPost(image) {
-    const response = await fetch("http://localhost:8080/posts",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          "Authorization": `Bearer ${getCookie("token")}`,
-        },
-        body: JSON.stringify({
-          restaurantName: restaurantName.value,
-          link: link.value,
-          image: image ? image : null,
-          content: content.value,
-        }),
+    const ask = confirm("게시물을 등록하시겠습니까?");
+
+    if(ask) {
+        const response = await fetch(`${apiUrl()}/api/posts`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "Authorization": `Bearer ${getCookie("token")}`,
+          },
+          body: JSON.stringify({
+            restaurantName: restaurantName.value,
+            link: link.value,
+            image: image ? image : null,
+            content: content.value,
+          }),        
+        }    
+      );
+      console.log(response);  
+      if(response.ok) {
+        window.location.replace("/index.html");
+      } else {
+        console.log("게시물 등록 에러");
       }
-    );
-    console.log(response);
+    }     
   }
+
 
   if(photo.files[0]){
     const reader = new FileReader();
     reader.addEventListener("load", async(e) => {
       console.log(e);
       const image = e.target.result;
-      createPost(image);
+      await createPost(image);
     });
     reader.readAsDataURL(photo.files[0]);
   } else {
-    createPost();
+      createPost();
   }
-
-    // const reader = new FileReader();
-    // reader.addEventListener("load", async(e) => {
-    //   console.log(e);
-    //   const image = e.target.result;
-    //   createPost(image);
-    // });
-    // reader.readAsDataURL(photo.files[0]);
-
-    alert("작성이 완료되었습니다.");
-    window.location.replace("/index.html");
+  
 });
+
+
+// buttons[0].addEventListener("click", (e)=> {
+//   e.preventDefault();
+
+//   if(restaurantName.value === "") {
+//     alert("상호명을 입력해주세요.");
+//     return;
+//   }
+
+//   if(link.value === "") {
+//     alert("가게의 주소를 입력해주세요.");
+//     return;
+//   }
+
+//   // if(photo.value === "") {
+//   //   alert("음식사진을 올려주세요.");
+//   //   return;
+//   // }
+
+//   if(content.value === "") {
+//     alert("간단한 후기를 작성해주세요.")
+//     return;
+//   }
+
+//   // 게시물 생성 함수
+//   async function createPost(image) {
+//     const ask = confirm("게시물을 등록하시겠습니까?");
+
+//     if(ask) {
+//         const response = await fetch(`${apiUrl()}/api/posts`,
+//         {
+//           method: "POST",
+//           headers: {
+//             "content-type": "application/json",
+//             "Authorization": `Bearer ${getCookie("token")}`,
+//           },
+//           body: JSON.stringify({
+//             restaurantName: restaurantName.value,
+//             link: link.value,
+//             image: image ? image : null,
+//             content: content.value,
+//           }),        
+//         }    
+//       );
+//       console.log(response);  
+//     } 
+//     console.log(`${apiUrl()}/api/posts`);
+     
+//   }
+
+
+//   if(photo.files[0]){
+//     const reader = new FileReader();
+//     reader.addEventListener("load", async(e) => {
+//       console.log(e);
+//       const image = e.target.result;
+//       createPost(image);
+//     });
+//     reader.readAsDataURL(photo.files[0]);
+//   } else {
+//     createPost();
+//   }
+
+
+
+//     // const reader = new FileReader();
+//     // reader.addEventListener("load", async(e) => {
+//     //   console.log(e);
+//     //   const image = e.target.result;
+//     //   createPost(image);
+//     // });
+//     // reader.readAsDataURL(photo.files[0]);
+
+
+//   // window.location.replace("/index.html");
+
+   
+// });
