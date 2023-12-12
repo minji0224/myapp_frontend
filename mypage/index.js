@@ -127,7 +127,7 @@ document.getElementById("myPost").addEventListener("click", (e)=> {
     const postNo = e.target.parentElement.parentElement.dataset.no;
     // 버튼에 value값을 넣어서 value값으로 찾아와도 됨  e.target.value;   
     console.log(postNo);
-    window.location.href = `http://localhost:5500/post/create.html?postNo=${postNo}`;
+    window.location.href = `/post/create.html?postNo=${postNo}`;
   }
 })
 
